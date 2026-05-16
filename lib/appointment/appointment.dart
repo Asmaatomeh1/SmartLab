@@ -684,8 +684,8 @@
 // ignore_for_file: deprecated_member_use
 
 // appointment.dart
-import 'package:appwithfirebase/appointment_cubit.dart';
-import 'package:appwithfirebase/appointment_state.dart';
+import 'package:appwithfirebase/appointment/appointment_cubit.dart';
+import 'package:appwithfirebase/appointment/appointment_state.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';

@@ -62,9 +62,18 @@ dependencies:
   persistent_bottom_nav_bar: ^6.2.1
   flutter_easy_multi_step_form: ^1.0.5
   url_launcher: ^6.2.6
-  # bloc: ^9.2.0
+  file_picker: ^11.0.1
+  firebase_storage: ^12.4.10
+  syncfusion_flutter_pdfviewer: 26.2.14
+  device_info_plus: 10.1.2
+  # syncfusion_flutter_pdfviewer: ^33.1.46
 
-  
+  bloc: ^9.2.0
+  image_picker: ^1.2.1
+  http: ^1.6.0
+  path_provider: ^2.1.5
+  flutter_media_downloader: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

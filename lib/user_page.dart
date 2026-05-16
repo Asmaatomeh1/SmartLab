@@ -1,8 +1,11 @@
-import 'package:appwithfirebase/button1.dart';
+import 'package:appwithfirebase/shared_widget/button1.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
 import 'package:appwithfirebase/home.dart';
-import 'package:appwithfirebase/multi_step_form_screen.dart';
-import 'package:appwithfirebase/result.dart';
+import 'package:appwithfirebase/appointment/multi_step_form_screen.dart';
+import 'package:appwithfirebase/proflie/profile_page.dart';
+import 'package:appwithfirebase/result/result.dart';
+import 'package:appwithfirebase/search_page.dart';
+import 'package:appwithfirebase/test/prep_page.dart';
 import 'package:flutter/material.dart';
 
 // class UserPage extends StatelessWidget {
@@ -216,11 +219,13 @@ class _UserPageState extends State<UserPage> {
     return [
       const Home(),
 
-      const Center(child: Text("Search")),
-
+      // PrepPage(),
+      SearchPage(),
       _BuildAddPageStart(),
       const ResultsScreen(),
-      const Center(child: Text("Profile")),
+
+      // const EditProfilePage(),
+      const ProfilePage(),
     ];
   }
 
@@ -264,13 +269,13 @@ class _UserPageState extends State<UserPage> {
       ),
       PersistentBottomNavBarItem(
         icon: Image.asset(
-          'assets/images/settings-2.png',
+          'assets/images/exam-results.png',
           width: 24,
           height: 24,
           color: Colors.blueAccent,
         ),
         inactiveIcon: Image.asset(
-          'assets/images/settings.png',
+          'assets/images/exam-results.png',
           width: 24,
           height: 24,
           color: Colors.grey,

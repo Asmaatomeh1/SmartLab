@@ -214,13 +214,18 @@
 // }
 
 //results_screen.dart
-import 'package:appwithfirebase/appointment_cubit.dart';
+import 'package:appwithfirebase/appointment/appointment_cubit.dart';
+import 'package:appwithfirebase/shared_widget/button1.dart';
+import 'package:appwithfirebase/shared_widget/button2.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
 import 'package:appwithfirebase/core/theme/appfont.dart';
-import 'package:appwithfirebase/multi_step_form_screen_for_edit.dart';
-import 'package:appwithfirebase/result_cubit.dart';
-import 'package:appwithfirebase/result_state.dart';
+import 'package:appwithfirebase/appointment/multi_step_form_screen_for_edit.dart';
+import 'package:appwithfirebase/result/pdf_view_screen.dart';
+import 'package:appwithfirebase/result/result_cubit.dart';
+import 'package:appwithfirebase/result/result_state.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -323,8 +328,8 @@ class _ResultList extends StatelessWidget {
   Color get _statusColor {
     return switch (status) {
       // ignore: deprecated_member_use
-      'completed' => AppColors.blue.withOpacity(0.12),
-      'missed' => Colors.red,
+      'completed' => Colors.green.withOpacity(0.12),
+      'missed' => Colors.red.withOpacity(0.12),
       _ => const Color(0xFFFFF2E0),
     };
   }
@@ -332,7 +337,7 @@ class _ResultList extends StatelessWidget {
   Color get _statusColorText {
     return switch (status) {
       // ignore: deprecated_member_use
-      'completed' => AppColors.blue.withOpacity(0.12),
+      'completed' => Colors.green,
       'missed' => Colors.red,
       _ => const Color(0xFFD97706),
     };
@@ -416,7 +421,7 @@ class _AppointmentCard extends StatelessWidget {
                 status: status,
                 color: statusColor,
                 onViewResult: status == 'completed'
-                    ? () => _onViewResult(context)
+                    ? () => _onViewResult(context, _appointmentId)
                     : null,
                 textColor: textColor,
               ),
@@ -450,6 +455,18 @@ class _AppointmentCard extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 10),
+            if (status == 'completed')
+              SizedBox(
+                width: 0,
+                // height: 56,
+                child: Button2(
+                  onPressed: () => _onViewResult(context, _appointmentId),
+                  text: 'View Result',
+                  size: Size(10, 18),
+                  width: 5,
+                  height: 5,
+                ),
+              ),
             if (status != 'completed')
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -514,7 +531,14 @@ class _AppointmentCard extends StatelessWidget {
     );
   }
 
-  void _onViewResult(BuildContext context) {
+  void _onViewResult(BuildContext context, String appointmentId) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => UserViewPage(appointmentId: appointmentId),
+      ),
+    );
+
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text('Opening result...')));
@@ -563,16 +587,12 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (onViewResult != null) {
-      return TextButton(
-        onPressed: onViewResult,
-        child: const Text('View Result'),
-      );
-    }
-
     final label = switch (status) {
       'missed' => 'Missed',
-      _ => 'Pending',
+      'completed' => 'Completed',
+      'pending' => 'Pending',
+      // TODO: Handle this case.
+      _ => 'Unknown',
     };
 
     return Container(

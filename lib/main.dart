@@ -56,9 +56,10 @@
 //   }
 // }
 
-import 'package:appwithfirebase/appointment.dart';
-import 'package:appwithfirebase/auth.dart';
+import 'package:appwithfirebase/appointment/appointment.dart';
+import 'package:appwithfirebase/authentication/auth.dart';
 import 'package:appwithfirebase/admin_page.dart';
+import 'package:appwithfirebase/mock_data.dart';
 import 'package:appwithfirebase/routes.dart';
 import 'package:appwithfirebase/start_screen.dart';
 import 'package:appwithfirebase/user_page.dart';
@@ -74,6 +75,8 @@ void main() async {
 
   // 2. Initialize Rive for Web (This initializes 'makeFlutterFactory')
   //await RiveFile.initialize();
+  //FirebaseAuth.instance.signOut();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
@@ -159,3 +162,52 @@ class AuthWrapper extends StatelessWidget {
     );
   }
 }
+
+// main.dart
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
+// import 'injection_container.dart';
+// import 'features/appointments/presentation/bloc/appointment_bloc.dart';
+// import 'features/tests/presentation/bloc/test_bloc.dart';
+// import 'features/results/presentation/bloc/result_bloc.dart';
+
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+//   setupServiceLocator();
+//   runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiBlocProvider(
+//       providers: [
+//         BlocProvider<AppointmentBloc>(create: (_) => getIt<AppointmentBloc>()),
+//         BlocProvider<TestBloc>(create: (_) => getIt<TestBloc>()),
+//         BlocProvider<ResultBloc>(create: (_) => getIt<ResultBloc>()),
+//       ],
+//       child: MaterialApp(
+//         title: 'Medical Tests App',
+//         theme: ThemeData(primarySwatch: Colors.blue),
+//         home: const MyHomePage(),
+//       ),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatelessWidget {
+//   const MyHomePage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: const Text('Medical Tests')),
+//       body: Center(child: Text('Hello Clean Architecture!')),
+//     );
+//   }
+// }

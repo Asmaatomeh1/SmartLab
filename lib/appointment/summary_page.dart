@@ -62,8 +62,8 @@
 //     );
 //   }
 // }
-import 'package:appwithfirebase/appointment_cubit.dart';
-import 'package:appwithfirebase/appointment_state.dart';
+import 'package:appwithfirebase/appointment/appointment_cubit.dart';
+import 'package:appwithfirebase/appointment/appointment_state.dart';
 // Ensure your AppColors are imported
 import 'package:appwithfirebase/test/test_cubit.dart';
 

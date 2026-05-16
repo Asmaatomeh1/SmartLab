@@ -83,6 +83,7 @@
 
 //import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
 
+import 'package:appwithfirebase/model/patient_model.dart';
 import 'package:appwithfirebase/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -110,6 +111,22 @@ class AppAuth {
             .collection('users')
             .doc(userCredential.user!.uid)
             .set(userModel.toMap());
+        if (AppAuth.role == 'patient') {
+          await FirebaseFirestore.instance
+              .collection('patients')
+              .doc(userCredential.user!.uid)
+              .set(
+                PatientModel(
+                  patientId: userCredential.user!.uid,
+                  user: userModel,
+                  location: '',
+                  bloodType: BloodType.unknown,
+                  allergies: [],
+                  medications: [],
+                  conditions: [],
+                ).toMap(),
+              );
+        }
         // log(userCredential.user!.uid);
 
         await userCredential.user!.sendEmailVerification();

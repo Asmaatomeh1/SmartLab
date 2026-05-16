@@ -1,3 +1,4 @@
+import 'package:appwithfirebase/mock_data.dart';
 import 'package:appwithfirebase/test/custom_appbar.dart';
 import 'package:appwithfirebase/test/home_grid.dart';
 import 'package:appwithfirebase/test/image_slider.dart';
@@ -32,10 +33,21 @@ import 'package:flutter/material.dart';
 //   }
 // }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  initState() {
+    super.initState();
+    //setPatient();
+    // Any initialization logic can go here
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(

@@ -1,9 +1,9 @@
 // import 'package:appwithfirebase/app_styles.dart';
-import 'package:appwithfirebase/auth.dart';
-import 'package:appwithfirebase/button1.dart';
+import 'package:appwithfirebase/authentication/auth.dart';
+import 'package:appwithfirebase/shared_widget/button1.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
 import 'package:appwithfirebase/core/theme/appfont.dart';
-import 'package:appwithfirebase/login/login.dart';
+import 'package:appwithfirebase/authentication/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

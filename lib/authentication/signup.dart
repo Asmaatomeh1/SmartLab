@@ -1,9 +1,9 @@
-import 'package:appwithfirebase/auth.dart';
-import 'package:appwithfirebase/button2.dart';
+import 'package:appwithfirebase/authentication/auth.dart';
+import 'package:appwithfirebase/shared_widget/button2.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
-import 'package:appwithfirebase/login/login.dart';
+import 'package:appwithfirebase/authentication/login/login.dart';
 import 'package:appwithfirebase/model/user_model.dart';
-import 'package:appwithfirebase/my_text_form_field.dart';
+import 'package:appwithfirebase/shared_widget/my_text_form_field.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

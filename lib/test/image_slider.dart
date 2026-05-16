@@ -14,9 +14,9 @@ class _ImageSliderState extends State<ImageSlider> {
   int currentIndex = 0;
 
   List<String> images = [
-    "https://picsum.photos/400/200",
-    "https://picsum.photos/401/200",
-    "https://picsum.photos/402/200",
+    "assets/images/360_F_93974811_x14KnnNUtpAQCk8Ai2P3KItiVVioNJLA.jpg",
+    "assets/images/360_F_93974811_x14KnnNUtpAQCk8Ai2P3KItiVVioNJLA.jpg",
+    "assets/images/360_F_93974811_x14KnnNUtpAQCk8Ai2P3KItiVVioNJLA.jpg",
   ];
 
   @override
@@ -39,7 +39,7 @@ class _ImageSliderState extends State<ImageSlider> {
                 margin: const EdgeInsets.symmetric(horizontal: 16),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.network(
+                  child: Image.asset(
                     images[index],
                     fit: BoxFit.cover,
                     width: double.infinity,

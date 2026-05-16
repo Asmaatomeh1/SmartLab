@@ -83,3 +83,24 @@ Future<void> uploadMockTests() async {
         .set(test);
   }
 }
+
+setPatient() {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  firestore.collection('patients').doc().set({
+    "patientId": "ctzIkwFmX0gNtFWjWFfidzlIfEr2",
+    "user": {
+      "fullName": {"firstName": "Asmaa", "lastName": "Hassan"},
+      "email": "asmaa@email.com",
+      "phone": "+970 59 123 4567",
+      "birthDate": "1990-03-15T00:00:00.000",
+      "profileImage": "",
+      "password": "...",
+      "role": "patient",
+    },
+    "location": "Nablus, West Bank",
+    "bloodType": "O+",
+    "allergies": ["Penicillin"],
+    "medications": ["Metformin"],
+    "conditions": ["Type 2 Diabetes"],
+  });
+}

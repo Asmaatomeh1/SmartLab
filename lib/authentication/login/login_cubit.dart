@@ -1,5 +1,6 @@
-import 'package:appwithfirebase/auth.dart';
-import 'package:appwithfirebase/login/login_status.dart';
+import 'package:appwithfirebase/authentication/auth.dart';
+import 'package:appwithfirebase/authentication/login/login_status.dart';
+import 'package:appwithfirebase/proflie/profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -142,6 +143,7 @@ class LoginCubit extends Cubit<LoginState> {
 
           // 5. Hydrate the AppAuth.currentUser global variable
           await AppAuth().refreshCurrentUser();
+          await Profile().getCurrentProfile();
 
           emit(LoginSuccess(dbRole));
         } else {
@@ -153,6 +155,7 @@ class LoginCubit extends Cubit<LoginState> {
     } on FirebaseAuthException catch (e) {
       emit(LoginError(e.message ?? "Login failed."));
     } catch (e) {
+      print(e);
       emit(LoginError("An unexpected error occurred."));
     }
   }

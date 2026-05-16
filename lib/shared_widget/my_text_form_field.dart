@@ -12,6 +12,8 @@ class MyTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.fontSize = 16,
     this.onChanged,
+    this.maxLines = 1,
+    this.prefixIcon,
   });
 
   final String? Function(String?)? validator;
@@ -21,18 +23,22 @@ class MyTextFormField extends StatelessWidget {
   final bool obscureText;
   final double fontSize;
   final ValueChanged<String>? onChanged;
+  final int maxLines;
+  final Widget? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50.h,
       child: TextFormField(
+        maxLines: maxLines,
         onChanged: onChanged,
         obscureText: obscureText,
         keyboardType: keyboardType,
         validator: validator,
         controller: controller,
         decoration: InputDecoration(
+          prefixIcon: prefixIcon,
           // hintStyle: AppFonts.subtitleGreyMedium.copyWith(fontSize: 15.sp),
           hint: Text(
             "Enter your $labelText",
