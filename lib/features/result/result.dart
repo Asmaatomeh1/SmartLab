@@ -214,15 +214,15 @@
 // }
 
 //results_screen.dart
-import 'package:appwithfirebase/appointment/appointment_cubit.dart';
+import 'package:appwithfirebase/features/appointment/appointment_cubit.dart';
 import 'package:appwithfirebase/shared_widget/button1.dart';
 import 'package:appwithfirebase/shared_widget/button2.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
 import 'package:appwithfirebase/core/theme/appfont.dart';
-import 'package:appwithfirebase/appointment/multi_step_form_screen_for_edit.dart';
-import 'package:appwithfirebase/result/pdf_view_screen.dart';
-import 'package:appwithfirebase/result/result_cubit.dart';
-import 'package:appwithfirebase/result/result_state.dart';
+import 'package:appwithfirebase/features/appointment/multi_step_form_screen_for_edit.dart';
+import 'package:appwithfirebase/features/result/pdf_view_screen.dart';
+import 'package:appwithfirebase/features/result/result_cubit.dart';
+import 'package:appwithfirebase/features/result/result_state.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';

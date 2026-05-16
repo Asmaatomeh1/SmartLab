@@ -1,4 +1,4 @@
-import 'package:appwithfirebase/authentication/auth.dart';
+import 'package:appwithfirebase/features/authentication/auth.dart';
 import 'package:flutter/material.dart';
 
 Widget customAppBar() {

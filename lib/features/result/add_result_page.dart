@@ -691,8 +691,8 @@
 //   // }
 // }
 
-import 'package:appwithfirebase/result/add_result_cubit.dart';
-import 'package:appwithfirebase/result/add_result_state.dart';
+import 'package:appwithfirebase/features/result/add_result_cubit.dart';
+import 'package:appwithfirebase/features/result/add_result_state.dart';
 import 'package:appwithfirebase/shared_widget/my_text_form_field.dart';
 import 'package:appwithfirebase/model/result_model.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';

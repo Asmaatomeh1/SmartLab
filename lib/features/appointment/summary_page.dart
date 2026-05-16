@@ -62,10 +62,10 @@
 //     );
 //   }
 // }
-import 'package:appwithfirebase/appointment/appointment_cubit.dart';
-import 'package:appwithfirebase/appointment/appointment_state.dart';
+import 'package:appwithfirebase/features/appointment/appointment_cubit.dart';
+import 'package:appwithfirebase/features/appointment/appointment_state.dart';
 // Ensure your AppColors are imported
-import 'package:appwithfirebase/test/test_cubit.dart';
+import 'package:appwithfirebase/features/test/test_cubit.dart';
 
 import 'package:appwithfirebase/test_state.dart';
 import 'package:flutter/material.dart';

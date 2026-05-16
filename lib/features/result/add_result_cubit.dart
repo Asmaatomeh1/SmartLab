@@ -237,7 +237,7 @@
 // //   // }
 // // }
 
-import 'package:appwithfirebase/result/add_result_state.dart';
+import 'package:appwithfirebase/features/result/add_result_state.dart';
 import 'package:appwithfirebase/model/result_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

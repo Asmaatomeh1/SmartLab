@@ -1,5 +1,328 @@
 // // import 'package:appwithfirebase/appointment.dart';
 // // import 'package:appwithfirebase/appointment_cubit.dart';
+// // import 'package:appwithfirebase/appointment_state.dart';
+// // import 'package:appwithfirebase/core/theme/appcolor.dart';
+// // import 'package:appwithfirebase/edit_appointment_cubit.dart';
+// // import 'package:appwithfirebase/summary_page.dart';
+// // import 'package:appwithfirebase/test/test_cubit.dart';
+// // import 'package:appwithfirebase/test/test_selection_step.dart';
+
+// // import 'package:appwithfirebase/test_state.dart';
+// // import 'package:appwithfirebase/user_page.dart';
+// // import 'package:awesome_dialog/awesome_dialog.dart';
+// // import 'package:flutter/material.dart';
+// // import 'package:flutter_bloc/flutter_bloc.dart';
+// // import 'package:flutter_easy_multi_step_form/flutter_easy_multi_step_form.dart';
+// // import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+// // class MultiStepFormScreenForEdit extends StatefulWidget {
+// //   const MultiStepFormScreenForEdit({super.key, required this.appointmentId});
+
+// //   final String appointmentId;
+
+// //   @override
+// //   State<MultiStepFormScreenForEdit> createState() =>
+// //       _MultiStepFormScreenForEditState();
+// // }
+
+// // class _MultiStepFormScreenForEditState
+// //     extends State<MultiStepFormScreenForEdit> {
+// //   final _formKey = GlobalKey<FormState>();
+
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     // FIX 1: Wrap everything in the Provider FIRST
+// //     return Theme(
+// //       data: Theme.of(context).copyWith(
+// //         primaryColor: AppColors.blue,
+// //         colorScheme: ColorScheme.fromSwatch().copyWith(
+// //           secondary: AppColors.blue,
+// //         ),
+// //       ),
+// //       child: MultiBlocProvider(
+// //         providers: [
+// //          // BlocProvider(create: (_) => TestCubit()..loadTests()),
+// //          // BlocProvider(create: (_) => AppointmentCubit()..initialize()),
+// //           BlocProvider(create: (context) => EditAppointmentCubit()..prepareForEdit(widget.appointmentId)),
+// //         ],
+// //         child: BlocListener<AppointmentCubit, AppointmentState>(
+// //           listener: (context, state) {
+// //             if (state is AppointmentInitial) {
+// //               _showErrorDialog(context, "Please select a date and time.");
+// //             }
+// //             if (state is AppointmentError) {
+// //               _showErrorDialog(context, state.message);
+// //               context.read<AppointmentCubit>().resetSelection();
+// //             }
+// //             if (state is AppointmentLoading) {
+// //               Center(child: CircularProgressIndicator());
+// //             }
+// //             if (state is AppointmentBookingSuccess) {
+// //               _showSuccessDialog(context, "Appointment booked successfully!");
+// //             }
+// //           },
+// //           child: Scaffold(
+// //             backgroundColor: Colors.white,
+// //             // FIX 2: Use Builder so 'context' can find the Cubits above
+// //             body: Builder(
+// //               builder: (context) {
+// //                 return Form(
+// //                   key: _formKey, // Ensure this is active
+// //                   child: MultiStepFormWidget(
+// //                     onSubmit: () {
+// //                       if (_formKey.currentState!.validate()) {
+// //                         if (context.read<TestCubit>().state is! TestLoaded) {
+// //                           _showErrorDialog(
+// //                             context,
+// //                             "Tests are still loading. Please wait.",
+// //                           );
+// //                           return;
+// //                         }
+// //                         final testCubit = context.read<TestCubit>();
+// //                         final apptCubit = context.read<AppointmentCubit>();
+
+// //                         // Use the getters you created in the Cubit
+// //                         // if (testCubit.selectedTests.isEmpty) {
+// //                         //   _showErrorDialog(
+// //                         //     context,
+// //                         //     "Please select at least one test.",
+// //                         //   );
+// //                         //   return;
+// //                         // }
+
+// //                         // if (apptCubit.selectedTime == null ||
+// //                         //     apptCubit.selectedDate == null) {
+// //                         //   _showErrorDialog(
+// //                         //     context,
+// //                         //     "Please pick a date and time.",
+// //                         //   );
+// //                         //   return;
+// //                         // }
+
+// //                         // If we reach here, data is valid
+
+// //                         apptCubit.editAppointment(
+
+// //                         );
+// //                       }
+// //                     },
+// //                     steps: [
+// //                       FormStep(
+// //                         title: 'Select Tests',
+// //                         fields: [
+// //                           SizedBox(
+// //                             height: 520.h,
+// //                             child: const TestSelectionStep(),
+// //                           ),
+// //                         ],
+// //                       ),
+// //                       FormStep(
+// //                         title: 'Pick Appointment',
+// //                         fields: [
+// //                           SizedBox(
+// //                             height: 520.h,
+// //                             child: const AppointmentPage(),
+// //                           ),
+// //                         ],
+// //                       ),
+// //                       FormStep(
+// //                         title: 'Summary',
+// //                         fields: [
+// //                           SizedBox(
+// //                             height: 520.h,
+// //                             child: const SummaryPage(),
+// //                             //   width: 800,
+// //                           ),
+// //                         ],
+// //                       ),
+// //                     ],
+// //                     nextButtonColor: AppColors.blue,
+// //                     nextButtonTextColor: Colors.white,
+// //                     submitButtonColor: AppColors.blue,
+// //                     prevButtonColor: Color.fromARGB(
+// //                       255,
+// //                       225,
+// //                       227,
+// //                       228,
+// //                     ), // Grey color
+// //                     prevButtonTextColor: Colors.black,
+
+// //                     // ... other styling
+// //                   ),
+// //                 );
+// //               },
+// //             ),
+// //           ),
+// //         ),
+// //       ),
+// //     );
+// //   }
+
+// //   void _showErrorDialog(BuildContext context, String message) {
+// //     AwesomeDialog(
+// //       context: context,
+// //       dialogType: DialogType.error,
+// //       title: 'Error',
+// //       animType: AnimType.scale,
+// //       // customHeader: Container(
+// //       //   padding: const EdgeInsets.all(16),
+// //       //   decoration: BoxDecoration(color: Colors.red, shape: BoxShape.circle),
+// //       //   child: const Icon(Icons.error_outline, color: Colors.white, size: 40),
+// //       // ),
+// //       btnOkOnPress: () {},
+// //       btnOkColor: AppColors.blue,
+// //       desc: message,
+// //     ).show();
+// //   }
+
+// //   void _showSuccessDialog(BuildContext context, String message) {
+// //     AwesomeDialog(
+// //       context: context,
+// //       dialogType: DialogType.success,
+// //       title: 'Success',
+// //       animType: AnimType.scale,
+// //       // customHeader: Container(
+// //       //   padding: const EdgeInsets.all(16),
+// //       //   decoration: BoxDecoration(color: Colors.green, shape: BoxShape.circle),
+// //       //   child: const Icon(
+// //       //     Icons.check_circle_outline,
+// //       //     color: Colors.white,
+// //       //     size: 40,
+// //       //   ),
+// //       // ),
+// //       btnOkOnPress: () {},
+// //       btnOkColor: AppColors.blue,
+// //       desc: message,
+// //     ).show();
+// //   }
+// // }
+
+// import 'package:appwithfirebase/appointment.dart';
+// import 'package:appwithfirebase/appointment_cubit.dart';
+// import 'package:appwithfirebase/appointment_state.dart';
+// import 'package:appwithfirebase/core/theme/appcolor.dart';
+// import 'package:appwithfirebase/edit_appointment_cubit.dart';
+// import 'package:appwithfirebase/edit_appointment_state.dart';
+// import 'package:appwithfirebase/model/test_model.dart';
+// import 'package:appwithfirebase/summary_page.dart';
+// import 'package:appwithfirebase/test/test_cubit.dart';
+// import 'package:appwithfirebase/test/test_selection_step.dart';
+// import 'package:appwithfirebase/test_state.dart';
+// import 'package:awesome_dialog/awesome_dialog.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_easy_multi_step_form/flutter_easy_multi_step_form.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+// // class MultiStepFormScreenForEdit extends StatelessWidget {
+// //   final String appointmentId;
+// //   //final List<TestModel> initialTests;
+
+// //   const MultiStepFormScreenForEdit({
+// //     super.key,
+// //     required this.appointmentId,
+// //     //required this.initialTests,
+// //   });
+
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return MultiBlocProvider(
+// //       providers: [
+// //         // This is where we use the new Edit Cubit
+// //         // BlocProvider(create: (context) => EditAppointmentCubit()),
+// //         BlocProvider(
+// //           create: (context) => TestCubit()
+// //             ..loadTests()
+// //             ..setInitialSelection(appointmentId),
+// //         ),
+// //         BlocProvider(
+// //           create: (context) => AppointmentCubit()
+// //             ..initialize()
+// //             ..setInitialSelection(appointmentId),
+// //         ),
+// //         // BlocProvider(create: (context) => EditAppointmentCubit()..prepareForEdit(appointmentId)),
+// //       ],
+// //       child: BlocListener<AppointmentCubit, AppointmentState>(
+// //         listener: (context, state) {
+// //           if (state is AppointmentBookingSuccess) {
+// //             AwesomeDialog(
+// //               context: context,
+// //               dialogType: DialogType.success,
+// //               title: 'Success',
+// //               desc: 'Appointment updated!',
+// //               btnOkOnPress: () => Navigator.pop(context),
+// //             ).show();
+// //           }
+// //           if (state is AppointmentError) {
+// //             ScaffoldMessenger.of(context).showSnackBar(
+// //               SnackBar(content: Text('Failed to update appointment')),
+// //             );
+// //           }
+// //         },
+// //         child: Scaffold(
+// //           body: Builder(
+// //             builder: (context) {
+// //               final appointmentCubit = context.watch<AppointmentCubit>();
+
+// //               if (appointmentCubit.state is AppointmentLoading) {
+// //                 return const Center(child: CircularProgressIndicator());
+// //               }
+
+// //               return MultiStepFormWidget(
+// //                 steps: [
+// //                   FormStep(
+// //                     title: 'Tests',
+// //                     fields: [
+// //                       Container(
+// //                         height: 520.h,
+// //                         child: const TestSelectionStep(),
+// //                       ),
+// //                     ],
+// //                   ),
+// //                   FormStep(
+// //                     title: 'Time',
+// //                     fields: [
+// //                       Container(height: 520.h, child: const AppointmentPage()),
+// //                     ],
+// //                   ),
+// //                   FormStep(
+// //                     title: 'Summary',
+// //                     fields: [
+// //                       Container(height: 520.h, child: const SummaryPage()),
+// //                     ],
+// //                   ),
+// //                 ],
+// //                 onSubmit: () {
+// //                   final tests = context.read<TestCubit>();
+// //                   final appt = context.read<AppointmentCubit>();
+
+// //                   // Trigger the NEW Edit Cubit
+// //                   // context.read<EditAppointmentCubit>().prepareForEdit(
+// //                   //   appointmentId,
+// //                   // );
+// //                   context.read<AppointmentCubit>().book(
+// //                     selectedTests: tests.selectedTests,
+// //                     totalAmount: tests.totalPrice,
+// //                   );
+// //                   // to: tests.totalPrice,
+// //                   // from: editCubit.state is EditAppointmentSuccess ? (editCubit.state as EditAppointmentSuccess).initialTests.fold(0, (sum, t) => sum + t.price) : 0,
+// //                   // initialTests: editCubit.state is EditAppointmentSuccess ? (editCubit.state as EditAppointmentSuccess).initialTests : [],
+// //                   // initialDate: editCubit.state is EditAppointmentSuccess ? (editCubit.state as EditAppointmentSuccess).initialDate : null,
+// //                   // initialTime: editCubit.state is EditAppointmentSuccess ? (editCubit.state as EditAppointmentSuccess).initialTime : null,
+// //                   // to: tests.totalPrice,
+// //                   // );
+// //                 },
+// //               );
+// //             },
+// //           ),
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
+
+// // import 'package:appwithfirebase/appointment.dart';
+// // import 'package:appwithfirebase/appointment_cubit.dart';
 // // import 'package:appwithfirebase/core/theme/appcolor.dart';
 // // import 'package:appwithfirebase/my_text_form_field.dart';
 // // import 'package:appwithfirebase/summary_page.dart';
@@ -193,30 +516,18 @@
 // //   }
 // // }
 
-// import 'package:appwithfirebase/appointment.dart';
-// import 'package:appwithfirebase/appointment_cubit.dart';
-// import 'package:appwithfirebase/appointment_state.dart';
-// import 'package:appwithfirebase/core/theme/appcolor.dart';
-// import 'package:appwithfirebase/summary_page.dart';
-// import 'package:appwithfirebase/test/test_cubit.dart';
-// import 'package:appwithfirebase/test/test_selection_step.dart';
+// class MultiStepFormScreenForEdit extends StatefulWidget {
+//   const MultiStepFormScreenForEdit({super.key, required this.appointmentId});
 
-// import 'package:appwithfirebase/test_state.dart';
-// import 'package:appwithfirebase/user_page.dart';
-// import 'package:awesome_dialog/awesome_dialog.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_easy_multi_step_form/flutter_easy_multi_step_form.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-// class MultiStepFormScreen extends StatefulWidget {
-//   const MultiStepFormScreen({super.key});
+//   final String appointmentId;
 
 //   @override
-//   State<MultiStepFormScreen> createState() => _MultiStepFormScreenState();
+//   State<MultiStepFormScreenForEdit> createState() =>
+//       _MultiStepFormScreenForEditState();
 // }
 
-// class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
+// class _MultiStepFormScreenForEditState
+//     extends State<MultiStepFormScreenForEdit> {
 //   final _formKey = GlobalKey<FormState>();
 
 //   @override
@@ -231,7 +542,11 @@
 //       ),
 //       child: MultiBlocProvider(
 //         providers: [
-//           BlocProvider(create: (_) => TestCubit()..loadTests()),
+//           BlocProvider(
+//             create: (_) => TestCubit()
+//               ..loadTests()
+//               ..setInitialSelection(widget.appointmentId),
+//           ),
 //           BlocProvider(create: (_) => AppointmentCubit()..initialize()),
 //         ],
 //         child: BlocListener<AppointmentCubit, AppointmentState>(
@@ -290,7 +605,8 @@
 
 //                         // If we reach here, data is valid
 
-//                         apptCubit.book(
+//                         apptCubit.editAppointment(
+//                           appointmentId: widget.appointmentId,
 //                           selectedTests: testCubit.selectedTests,
 //                           totalAmount: testCubit.totalPrice,
 //                         );
@@ -387,14 +703,14 @@
 //   }
 // }
 
-// multi_step_form_screen.dart
-import 'package:appwithfirebase/appointment/appointment.dart';
-import 'package:appwithfirebase/appointment/appointment_cubit.dart';
-import 'package:appwithfirebase/appointment/appointment_state.dart';
+// multi_step_form_screen_for_edit.dart
+import 'package:appwithfirebase/features/appointment/appointment.dart';
+import 'package:appwithfirebase/features/appointment/appointment_cubit.dart';
+import 'package:appwithfirebase/features/appointment/appointment_state.dart';
 import 'package:appwithfirebase/core/theme/appcolor.dart';
-import 'package:appwithfirebase/appointment/summary_page.dart';
-import 'package:appwithfirebase/test/test_cubit.dart';
-import 'package:appwithfirebase/test/test_selection_step.dart';
+import 'package:appwithfirebase/features/appointment/summary_page.dart';
+import 'package:appwithfirebase/features/test/test_cubit.dart';
+import 'package:appwithfirebase/features/test/test_selection_step.dart';
 import 'package:appwithfirebase/test_state.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
@@ -402,22 +718,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easy_multi_step_form/flutter_easy_multi_step_form.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MultiStepFormScreen extends StatefulWidget {
-  const MultiStepFormScreen({super.key});
+class MultiStepFormScreenForEdit extends StatefulWidget {
+  const MultiStepFormScreenForEdit({super.key, required this.appointmentId});
+
+  final String appointmentId;
 
   @override
-  State<MultiStepFormScreen> createState() => _MultiStepFormScreenState();
+  State<MultiStepFormScreenForEdit> createState() =>
+      _MultiStepFormScreenForEditState();
 }
 
-class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
+class _MultiStepFormScreenForEditState
+    extends State<MultiStepFormScreenForEdit> {
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => TestCubit()..loadTests()),
-        BlocProvider(create: (_) => AppointmentCubit()..initialize()),
+        BlocProvider(
+          create: (_) => TestCubit()
+            ..loadTests()
+            ..setInitialSelection(widget.appointmentId),
+        ),
+        BlocProvider(
+          create: (_) => AppointmentCubit()
+            ..initialize()
+            // Load existing date/time for this appointment
+            ..setInitialSelection(widget.appointmentId),
+        ),
       ],
       child: BlocListener<AppointmentCubit, AppointmentState>(
         listener: _appointmentListener,
@@ -452,8 +781,8 @@ class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
 
   List<FormStep> _buildSteps() => [
     FormStep(
-      title: 'Select Tests',
       fields: [SizedBox(height: 520.h, child: const TestSelectionStep())],
+      title: 'Select Tests',
     ),
     FormStep(
       title: 'Pick Appointment',
@@ -484,7 +813,8 @@ class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
       return;
     }
 
-    apptCubit.book(
+    apptCubit.editAppointment(
+      appointmentId: widget.appointmentId,
       selectedTests: testCubit.selectedTests,
       totalAmount: testCubit.totalPrice,
     );
@@ -492,7 +822,7 @@ class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
 
   void _appointmentListener(BuildContext context, AppointmentState state) {
     if (state is AppointmentBookingSuccess) {
-      _showSuccessDialog(context, 'Appointment booked successfully!');
+      _showSuccessDialog(context, 'Appointment updated successfully!');
     } else if (state is AppointmentError) {
       _showErrorDialog(context, state.message);
       context.read<AppointmentCubit>().resetSelection();
@@ -504,7 +834,6 @@ class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
       context: context,
       dialogType: DialogType.error,
       animType: AnimType.scale,
-
       desc: message,
       btnOkOnPress: () {},
       btnOkColor: AppColors.blue,
@@ -519,7 +848,7 @@ class _MultiStepFormScreenState extends State<MultiStepFormScreen> {
       desc: message,
       btnOkOnPress: () {
         Navigator.of(context).pop();
-        // Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => UserPage()));
+        // context.read<ResultCubit>().fetchUserResults();
       },
       btnOkColor: AppColors.blue,
     ).show();

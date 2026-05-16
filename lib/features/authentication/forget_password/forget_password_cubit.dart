@@ -1,4 +1,4 @@
-import 'package:appwithfirebase/authentication/forget_password/forget_password_status.dart';
+import 'package:appwithfirebase/features/authentication/forget_password/forget_password_status.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';

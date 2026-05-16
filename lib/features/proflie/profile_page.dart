@@ -1,6 +1,6 @@
-import 'package:appwithfirebase/authentication/auth.dart';
+import 'package:appwithfirebase/features/authentication/auth.dart';
 import 'package:appwithfirebase/model/patient_model.dart';
-import 'package:appwithfirebase/proflie/profile.dart';
+import 'package:appwithfirebase/features/proflie/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

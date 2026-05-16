@@ -1,5 +1,5 @@
-import 'package:appwithfirebase/authentication/forget_password/forget_password_cubit.dart';
-import 'package:appwithfirebase/authentication/forget_password/forget_password_status.dart';
+import 'package:appwithfirebase/features/authentication/forget_password/forget_password_cubit.dart';
+import 'package:appwithfirebase/features/authentication/forget_password/forget_password_status.dart';
 import 'package:appwithfirebase/shared_widget/my_text_form_field.dart';
 import 'package:flutter/material.dart';
 

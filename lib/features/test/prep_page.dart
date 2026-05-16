@@ -1,4 +1,4 @@
-import 'package:appwithfirebase/test/test_card.dart';
+import 'package:appwithfirebase/features/test/test_card.dart';
 import 'package:flutter/material.dart';
 
 class PrepPage extends StatelessWidget {

@@ -59,8 +59,8 @@
 
 import 'dart:io';
 
-import 'package:appwithfirebase/authentication/auth.dart';
-import 'package:appwithfirebase/result/result_state.dart';
+import 'package:appwithfirebase/features/authentication/auth.dart';
+import 'package:appwithfirebase/features/result/result_state.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:file_picker/file_picker.dart';

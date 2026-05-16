@@ -1,6 +1,6 @@
-import 'package:appwithfirebase/authentication/auth.dart';
-import 'package:appwithfirebase/authentication/login/login_status.dart';
-import 'package:appwithfirebase/proflie/profile.dart';
+import 'package:appwithfirebase/features/authentication/auth.dart';
+import 'package:appwithfirebase/features/authentication/login/login_status.dart';
+import 'package:appwithfirebase/features/proflie/profile.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
