@@ -3,6 +3,14 @@
 A new Flutter project.
 # SmartLab
 
+Smart Medical Laboratory System 🧪
+
+Smart Medical Laboratory System is a cross-platform mobile application designed to digitize and simplify medical laboratory services. It connects patients, laboratory technicians, and administrators through one secure platform.
+
+Patients can browse laboratory tests, book appointments, receive preparation instructions and reminders, and view their test results and medical history. Laboratory technicians can manage appointments, track test status, and upload results, while administrators can manage users, tests, and system activities.
+
+The system is built using Flutter and Firebase 
+
 <img width="498" height="999" alt="Screenshot 2026-09-10 at 17 41 43" src="https://github.com/user-attachments/assets/2e7f9a17-afc1-433c-8ad4-d26583609c6c" />
 
 
